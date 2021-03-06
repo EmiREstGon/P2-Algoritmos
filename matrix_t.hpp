@@ -17,26 +17,26 @@
 
 using namespace std;
 
-template<class T>
-class matrix_t
+template<class T> // plantilla de la clase de nombre: "T"
+class matrix_t // clase de nombre: "matrix_t"
 {
-public:
-  matrix_t(const int = 0, const int = 0);
-  ~matrix_t();
+public: // De aquí en adelante los miembros son públicos a, no ser que se exprese lo contrario
+  matrix_t(const int = 0, const int = 0); // constructor
+  ~matrix_t(); // destructor
   
-  void resize(const int, const int);
+  void resize(const int, const int); // redimensión de matriz 
   
   // getters
-  int get_m(void) const;
-  int get_n(void) const;
+  int get_m(void) const; // getter del numerador, de nombre: "get_num"
+  int get_n(void) const; // getter del denominador, de nombre: "get_den"
   
   // getters-setters
-  T& at(const int, const int);
-  T& operator()(const int, const int);
+  T& at(const int, const int); // setter de nombre: "at"
+  T& operator()(const int, const int); // getter del operador, de nombre: "operator"
   
   // getters constantes
-  const T& at(const int, const int) const;
-  const T& operator()(const int, const int) const;
+  const T& at(const int, const int) const; // getter constante de "at"
+  const T& operator()(const int, const int) const; // getter constante de "operator"
   
   // operaciones y operadores
   void multiply(const matrix_t<T>&, const matrix_t<T>&);
@@ -44,17 +44,17 @@ public:
   void write(ostream& = cout) const;
   void read(istream& = cin);
 
-private:
+private: // De aquí en adelante los miembros son privados, a no ser que se exprese lo contrario
   int m_, n_; // m_ filas y n_ columnas
   vector_t<T> v_;
   
-  int pos(const int, const int) const;
+  int pos(const int, const int) const; // función "pos" de tipo int
 };
 
 
 
 template<class T>
-matrix_t<T>::matrix_t(const int m, const int n)
+matrix_t<T>::matrix_t(const int m, const int n) // cálculo de redimensión de "matrix_t"
 { 
   m_ = m;
   n_ = n;
@@ -64,16 +64,16 @@ matrix_t<T>::matrix_t(const int m, const int n)
 
 
 template<class T>
-matrix_t<T>::~matrix_t()
+matrix_t<T>::~matrix_t() // llamada del destructor "~matrix_t()" que pertenece a la clase "matrix_t<T>"
 {}
 
 
 
 template<class T>
 void
-matrix_t<T>::resize(const int m, const int n)
+matrix_t<T>::resize(const int m, const int n) // llamada de la función "resize" que pertenece a la clase "matrix_t<T>"
 {
-  assert(m > 0 && n > 0);
+  assert(m > 0 && n > 0); // si (m > 0) y (n > 0) son TRUE: continúa la ejecución, si uno es FALSE: para la ejecución
   m_ = m;
   n_ = n;
   v_.resize(m_ * n_);
@@ -83,7 +83,7 @@ matrix_t<T>::resize(const int m, const int n)
 
 template<class T>
 inline int
-matrix_t<T>::get_m() const
+matrix_t<T>::get_m() const // llamada de "get_m" como constante, y que pertenece a la clase "matrix_t<T>"
 {
   return m_;
 }
@@ -92,7 +92,7 @@ matrix_t<T>::get_m() const
 
 template<class T>
 inline int
-matrix_t<T>::get_n() const
+matrix_t<T>::get_n() const // llamada de "get_n" como constante, y que pertenece a la clase "matrix_t<T>"
 {
   return n_;
 }
@@ -101,10 +101,10 @@ matrix_t<T>::get_n() const
 
 template<class T>
 T&
-matrix_t<T>::at(const int i, const int j)
+matrix_t<T>::at(const int i, const int j) // llamada del setter "at" que pertenece a la clase "matrix_t<T>"
 {
-  assert(i > 0 && i <= get_m());
-  assert(j > 0 && j <= get_n());
+  assert(i > 0 && i <= get_m()); // si (i > 0) y (i <= get_m()) son TRUE: continúa la ejecución, si uno es FALSE: para la ejecución
+  assert(j > 0 && j <= get_n()); // si (j > 0) y (j <= get_m()) son TRUE: continúa la ejecución, si uno es FALSE: para la ejecución
   return v_[pos(i, j)];
 }
 
@@ -112,7 +112,7 @@ matrix_t<T>::at(const int i, const int j)
 
 template<class T>
 T&
-matrix_t<T>::operator()(const int i, const int j)
+matrix_t<T>::operator()(const int i, const int j) // llamada del getter "operator" que pertenece a la clase "matrix_t<T>"
 {
   return at(i, j);
 }
@@ -121,7 +121,7 @@ matrix_t<T>::operator()(const int i, const int j)
 
 template<class T>
 const T&
-matrix_t<T>::at(const int i, const int j) const
+matrix_t<T>::at(const int i, const int j) const // llamada de la función "at" como constante, y que pertenece a la clase "matrix_t<T>"
 {
   assert(i > 0 && i <= get_m());
   assert(j > 0 && j <= get_n());
@@ -130,9 +130,10 @@ matrix_t<T>::at(const int i, const int j) const
 
 
 
+
 template<class T>
 const T&
-matrix_t<T>::operator()(const int i, const int j) const
+matrix_t<T>::operator()(const int i, const int j) const // llamada de la función "operator" como constante, y que pertenece a la clase "matrix_t<T>"
 {
   return at(i, j);
 }
@@ -141,7 +142,7 @@ matrix_t<T>::operator()(const int i, const int j) const
 
 template<class T>
 void
-matrix_t<T>::write(ostream& os) const
+matrix_t<T>::write(ostream& os) const // salida de la matriz "matrix_t" en consola
 { 
   os << get_m() << "x" << get_n() << endl;
   for (int i = 1; i <= get_m(); ++i) {
@@ -156,7 +157,7 @@ matrix_t<T>::write(ostream& os) const
 
 template<class T>
 void
-matrix_t<T>::read(istream& is)
+matrix_t<T>::read(istream& is) // lectura de la matriz "matrix_t" en consola
 {
   is >> m_ >> n_;
   resize(m_, n_);
@@ -166,10 +167,11 @@ matrix_t<T>::read(istream& is)
 }
 
 
+
 template<class T>
 inline
 int
-matrix_t<T>::pos(const int i, const int j) const
+matrix_t<T>::pos(const int i, const int j) const // llamada de la función "pos" como constante, y que pertenece a la clase "matrix_t<T>"
 {
   assert(i > 0 && i <= get_m());
   assert(j > 0 && j <= get_n());
@@ -181,7 +183,7 @@ matrix_t<T>::pos(const int i, const int j) const
 // FASE III: producto matricial
 template<class T>
 void
-matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)
+matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B) // producto matricial
 {
   // rellenar código
 }

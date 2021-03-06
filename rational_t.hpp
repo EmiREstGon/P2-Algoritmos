@@ -51,8 +51,8 @@ public: // De aquí en adelante los miembros son públicos a, no ser que se expr
   rational_t multiply(const rational_t&) const; // llamada a la función "multiply" o multiplicación, para la clase "rational_t"
   rational_t divide(const rational_t&) const; // llamada a la función "divide" o división, para la clase "rational_t"
 
-  void write(ostream& os = cout) const;
-  void read(istream& is = cin);
+  void write(ostream& os = cout) const; // escritura en consola => salida
+  void read(istream& is = cin); // lectura de consola => entrada
   
 private: // De aquí en adelante los miembros son privados, a no ser que se exprese lo contrario
   // pauta de estilo [11]: nombre de los atributos seguido de "_"
@@ -69,4 +69,3 @@ rational_t operator+(const rational_t&, const rational_t&); // sobrecarga del op
 rational_t operator-(const rational_t&, const rational_t&); // sobrecarga del operador (-)
 rational_t operator*(const rational_t&, const rational_t&); // sobrecarga del operador (*)
 rational_t operator/(const rational_t&, const rational_t&); // sobrecarga del operador (/)
-

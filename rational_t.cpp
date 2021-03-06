@@ -143,7 +143,7 @@ rational_t
 operator+(const rational_t& a, const rational_t& b) // operador suma (+)
 {
   a + b;
-  return(a+b);
+  return(rational_t);
 }
 
 
@@ -152,7 +152,7 @@ rational_t
 operator-(const rational_t& a, const rational_t& b) // operador resta (-)
 {
   a - b;
-  return(a-b);
+  return(rational_t);
 }
 
 
@@ -161,7 +161,7 @@ rational_t
 operator*(const rational_t& a, const rational_t& b) // operador multiplicación (*)
 {
   a * b;
-  return(a*b);
+  return(rational_t);
 }
 
 
@@ -170,12 +170,12 @@ rational_t
 operator/(const rational_t& a, const rational_t& b) // operador división (/)
 {
   a / b;
-  return(a/b);
+  return(rational_t);
 }
 
 
 
-// Entrada / Salida
+// Entrada / Salida (E/S)
 void
 rational_t::write(ostream& os) const // escritura en consola => salida
 {

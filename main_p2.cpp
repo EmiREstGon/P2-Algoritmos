@@ -28,41 +28,41 @@ int main()
   rational_t a(1, 2), b(3);
 
   // FASE I
-  cout << "a + b: ";
+  cout << "a + b: "; // suma
   (a+b).write();
 
-  cout << "b - a: ";
+  cout << "b - a: "; // resta
   (b-a).write();
 
-  cout << "a * b: ";
+  cout << "a * b: "; // multiplicación
   (a*b).write();
   
-  cout << "a / b: ";
+  cout << "a / b: "; // división
   (a/b).write();
   
-  cout << endl;
+  cout << endl; // fin de línea
   
   // FASE II
-  vector_t<double> v, w;
+  vector_t<double> v, w; // vector_t de tipo double, con las variables "v" y "w"
   v.read(), v.write();
   w.read(), w.write();
   
-  cout << "Producto escalar de vector_t<double>: " << scal_prod(v, w) << endl << endl;
+  cout << "Producto escalar de vector_t<double>: " << scal_prod(v, w) << endl << endl; // escritura por pantalla del producto escalar: "scal_prod(v, w)"
   
-  vector_t<rational_t> x, y;
+  vector_t<rational_t> x, y; // vector_t en la clase "rational_t", con las variables "x" y "y"
   x.read(), x.write();
   y.read(), y.write();
   
-  cout << "Producto escalar de vector_t<rational_t>: " << scal_prod(x, y) << endl << endl;
+  cout << "Producto escalar de vector_t<rational_t>: " << scal_prod(x, y) << endl << endl; // escritura por pantalla del producto escalar: "scal_prod(x, y)" 
   
   
   // FASE III
-  matrix_t<double> A, B, C;
+  matrix_t<double> A, B, C; // matriz de tipo double, con las variables "A", "B", "C"
   A.read(), A.write();
   B.read(), B.write();
   
   C.multiply(A, B);
-  cout << "Multiplicación de matrices A y B: " << endl;
+  cout << "Multiplicación de matrices A y B: " << endl; // escritura por pantalla de la multiplicación matricial:
   C.write();
   
   return 0;

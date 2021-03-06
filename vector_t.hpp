@@ -16,33 +16,33 @@
 using namespace std;
 
 template<class T>
-class vector_t
+class vector_t // clase de nombre: "vector_t"
 {
-public:
-  vector_t(const int = 0);
-  ~vector_t();
+public: // De aquí en adelante los miembros son públicos a, no ser que se exprese lo contrario
+  vector_t(const int = 0); // constructor
+  ~vector_t(); // destructor
   
-  void resize(const int);
+  void resize(const int); // redimensión del vector
   
   // getters
-  T get_val(const int) const;
-  int get_size(void) const;
+  T get_val(const int) const; // getter del valor, de nombre: "get_val"
+  int get_size(void) const; // getter del tamaño, de nombre: "get_size"
   
   // setters
-  void set_val(const int, const T);
+  void set_val(const int, const T); // setter del valor, de nombre: "set_val"
   
   // getters-setters
-  T& at(const int);
-  T& operator[](const int);
+  T& at(const int); // setter de nombre: "at"
+  T& operator[](const int); // getter del operador, de nombre: "operator"
   
   // getters constantes
-  const T& at(const int) const;
-  const T& operator[](const int) const;
+  const T& at(const int) const; // getter constante de "at"
+  const T& operator[](const int) const; // getter constante de "operator"
 
   void write(ostream& = cout) const;
   void read(istream& = cin);
 
-private:
+private: // De aquí en adelante los miembros son privados, a no ser que se exprese lo contrario
   T *v_;
   int sz_;
   
