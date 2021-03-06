@@ -53,7 +53,7 @@ private: // De aquí en adelante los miembros son privados, a no ser que se expr
 
 
 template<class T>
-vector_t<T>::vector_t(const int n)
+vector_t<T>::vector_t(const int n) // llamada de "build()" que pertenece a la clase "vector_t<T>" para crear el vector "vector_t" de tamaño "sz_"
 { sz_ = n;
   build();
 }
@@ -61,7 +61,7 @@ vector_t<T>::vector_t(const int n)
 
 
 template<class T>
-vector_t<T>::~vector_t()
+vector_t<T>::~vector_t() // llamada de "destroy()" que pertenece a la clase "vector_t<T>" para borrar el vector "vector_t" de tamaño "sz_"
 {
   destroy();
 }
@@ -70,10 +70,10 @@ vector_t<T>::~vector_t()
 
 template<class T>
 void
-vector_t<T>::build()
+vector_t<T>::build() // llamada de "build()" que pertenece a la clase "vector_t<T>" para crear el vector "vector_t" de tamaño "sz_" con condiciones
 {
-  v_ = NULL;
-  if (sz_ != 0) {
+  v_ = NULL; // "v_" tiene valor nulo "NULL"
+  if (sz_ != 0) { // si "sz_" es distinto de 0 continúa la ejecución
     v_ = new T[sz_];
     assert(v_ != NULL);
   }
@@ -83,9 +83,9 @@ vector_t<T>::build()
 
 template<class T>
 void
-vector_t<T>::destroy()
+vector_t<T>::destroy() // llamada de "destroy()" que pertenece a la clase "vector_t<T>" para borrar el vector "vector_t" de tamaño "sz_"
 {
-  if (v_ != NULL) {
+  if (v_ != NULL) { // si "v_" es distinto de "NULL" continúa la ejecución
     delete[] v_;
     v_ = NULL;
   }
@@ -96,7 +96,7 @@ vector_t<T>::destroy()
 
 template<class T>
 void
-vector_t<T>::resize(const int n)
+vector_t<T>::resize(const int n) // llamada de la función "resize" que pertenece a la clase "vector_t<T>"
 {
   destroy();
   sz_ = n;
@@ -107,9 +107,9 @@ vector_t<T>::resize(const int n)
 
 template<class T>
 inline T
-vector_t<T>::get_val(const int i) const
+vector_t<T>::get_val(const int i) const // llamada de "get_val" como constante, y que pertenece a la clase "vector_t<T>"
 {
-  assert(i >= 0 && i < get_size());
+  assert(i >= 0 && i < get_size()); // si (i >= 0) y (i < get_size()) son TRUE: continúa la ejecución, si uno es FALSE: para la ejecución
   return v_[i];
 }
 
@@ -117,7 +117,7 @@ vector_t<T>::get_val(const int i) const
 
 template<class T>
 inline int
-vector_t<T>::get_size() const
+vector_t<T>::get_size() const // llamada de "get_size" como constante, y que pertenece a la clase "vector_t<T>"
 {
   return sz_;
 }
@@ -126,9 +126,9 @@ vector_t<T>::get_size() const
 
 template<class T>
 void
-vector_t<T>::set_val(const int i, const T d)
+vector_t<T>::set_val(const int i, const T d) // llamada del setter "set_val" que pertenece a la clase "vector_t<T>"
 {
-  assert(i >= 0 && i < get_size());
+  assert(i >= 0 && i < get_size()); // si (i >= 0) y (i < get_size()) son TRUE: continúa la ejecución, si uno es FALSE: para la ejecución
   v_[i] = d;
 }
 
@@ -136,9 +136,9 @@ vector_t<T>::set_val(const int i, const T d)
 
 template<class T>
 T&
-vector_t<T>::at(const int i)
+vector_t<T>::at(const int i) // llamada del setter "at" que pertenece a la clase "vector_t<T>"
 {
-  assert(i >= 0 && i < get_size());
+  assert(i >= 0 && i < get_size()); // si (i >= 0) y (i < get_size()) son TRUE: continúa la ejecución, si uno es FALSE: para la ejecución
   return v_[i];
 }
 
@@ -146,7 +146,7 @@ vector_t<T>::at(const int i)
 
 template<class T>
 T&
-vector_t<T>::operator[](const int i)
+vector_t<T>::operator[](const int i) // llamada del getter "operator" que pertenece a la clase "vector_t<T>"
 {
   return at(i);
 }
@@ -155,7 +155,7 @@ vector_t<T>::operator[](const int i)
 
 template<class T>
 const T&
-vector_t<T>::at(const int i) const
+vector_t<T>::at(const int i) const // llamada de la función "at" como constante, y que pertenece a la clase "vector_t<T>"
 {
   assert(i >= 0 && i < get_size());
   return v_[i];
@@ -165,7 +165,7 @@ vector_t<T>::at(const int i) const
 
 template<class T>
 const T&
-vector_t<T>::operator[](const int i) const
+vector_t<T>::operator[](const int i) const // llamada de la función "operator" como constante, y que pertenece a la clase "vector_t<T>"
 {
   return at(i);
 }
@@ -174,7 +174,7 @@ vector_t<T>::operator[](const int i) const
 
 template<class T>
 void
-vector_t<T>::write(ostream& os) const
+vector_t<T>::write(ostream& os) const // salida del vector "vector_t<T>" en consola
 { 
   os << get_size() << ":\t";
   for (int i = 0; i < get_size(); i++)
@@ -186,7 +186,7 @@ vector_t<T>::write(ostream& os) const
 
 template<class T>
 void
-vector_t<T>::read(istream& is)
+vector_t<T>::read(istream& is) // lectura de la matriz "vector_t<T>" en consola
 {
   is >> sz_;
   resize(sz_);
@@ -198,7 +198,7 @@ vector_t<T>::read(istream& is)
 // FASE II: producto escalar
 template<class T>
 T
-scal_prod(const vector_t<T>& v, const vector_t<T>& w)
+scal_prod(const vector_t<T>& v, const vector_t<T>& w) // producto escalar
 {
   // rellenar código
 }
@@ -206,7 +206,7 @@ scal_prod(const vector_t<T>& v, const vector_t<T>& w)
 
 
 double
-scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)
+scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w) // producto escalar
 {
   // rellenar código 
 }

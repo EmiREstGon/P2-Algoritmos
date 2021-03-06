@@ -142,7 +142,7 @@ matrix_t<T>::operator()(const int i, const int j) const // llamada de la funció
 
 template<class T>
 void
-matrix_t<T>::write(ostream& os) const // salida de la matriz "matrix_t" en consola
+matrix_t<T>::write(ostream& os) const // salida de la matriz "matrix_t<T>" en consola
 { 
   os << get_m() << "x" << get_n() << endl;
   for (int i = 1; i <= get_m(); ++i) {
@@ -157,7 +157,7 @@ matrix_t<T>::write(ostream& os) const // salida de la matriz "matrix_t" en conso
 
 template<class T>
 void
-matrix_t<T>::read(istream& is) // lectura de la matriz "matrix_t" en consola
+matrix_t<T>::read(istream& is) // lectura de la matriz "matrix_t<T>" en consola
 {
   is >> m_ >> n_;
   resize(m_, n_);
