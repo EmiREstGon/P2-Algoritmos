@@ -107,7 +107,7 @@ rational_t::is_less(const rational_t& r, const double precision) const
 
 // operaciones
 rational_t
-rational_t::add(const rational_t& r) const
+rational_t::add(const rational_t& r) const // suma
 {
   return rational_t(get_num() * r.get_den() + get_den() * r.get_num(), 
                     get_den() * r.get_den());
@@ -116,7 +116,7 @@ rational_t::add(const rational_t& r) const
 
 
 rational_t
-rational_t::substract(const rational_t& r) const
+rational_t::substract(const rational_t& r) const // resta
 {
   return add(r.opposite());
 }
@@ -124,7 +124,7 @@ rational_t::substract(const rational_t& r) const
 
 
 rational_t
-rational_t::multiply(const rational_t& r) const
+rational_t::multiply(const rational_t& r) const // multiplicación
 {
   return rational_t(get_num() * r.get_num(), get_den() * r.get_den());
 }
@@ -132,7 +132,7 @@ rational_t::multiply(const rational_t& r) const
 
 
 rational_t
-rational_t::divide(const rational_t& r) const
+rational_t::divide(const rational_t& r) const // división
 {
   return multiply(r.reciprocal());
 }
@@ -140,40 +140,44 @@ rational_t::divide(const rational_t& r) const
 
 // FASE I: operadores
 rational_t
-operator+(const rational_t& a, const rational_t& b)
+operator+(const rational_t& a, const rational_t& b) // operador suma (+)
 {
-  // rellenar código
+  a + b;
+  return(a+b);
 }
 
 
 
 rational_t
-operator-(const rational_t& a, const rational_t& b)
+operator-(const rational_t& a, const rational_t& b) // operador resta (-)
 {
-  // rellenar código
+  a - b;
+  return(a-b);
 }
 
 
 
 rational_t
-operator*(const rational_t& a, const rational_t& b)
+operator*(const rational_t& a, const rational_t& b) // operador multiplicación (*)
 {
-  // rellenar código
+  a * b;
+  return(a*b);
 }
 
 
 
 rational_t
-operator/(const rational_t& a, const rational_t& b)
+operator/(const rational_t& a, const rational_t& b) // operador división (/)
 {
-  // rellenar código
+  a / b;
+  return(a/b);
 }
 
 
 
-// E/S
+// Entrada / Salida
 void
-rational_t::write(ostream& os) const
+rational_t::write(ostream& os) const // escritura en consola => salida
 {
   os << get_num() << "/" << get_den() << "=" << value() << endl;
 }
@@ -181,7 +185,7 @@ rational_t::write(ostream& os) const
 
 
 void
-rational_t::read(istream& is)
+rational_t::read(istream& is) // lectura de consola => entrada
 {
   is >> num_ >> den_;
   assert(den_ != 0);
@@ -190,15 +194,16 @@ rational_t::read(istream& is)
 
 
 ostream&
-operator<<(ostream& os, const rational_t& r)
+operator<<(ostream& os, const rational_t& r) // salida de texto en consola (http://www.cplusplus.com/reference/ostream/ostream/)
 {
   r.write(os);
   return os;
 }
 
 
+
 istream&
-operator>>(istream& is, rational_t& r)
+operator>>(istream& is, rational_t& r) // lectura de texto en consola (https://www.cplusplus.com/reference/istream/istream/)
 {
   r.read(is);
   return is;

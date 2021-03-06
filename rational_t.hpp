@@ -21,22 +21,22 @@
 
 using namespace std;
 
-class rational_t
+class rational_t // clase de nombre: "rational_t"
 {
   // pautas de estilos [44] y [73]: primero "public" y después "private"
-public:
+public: // De aquí en adelante los miembros son públicos a, no ser que se exprese lo contrario
   rational_t(const int = 0, const int = 1);
   ~rational_t() {}
   
   // pauta de estilo [71]: indentación a 2 espacios
   
-  // getters
-  int get_num() const;
-  int get_den() const;
+  // método: getters
+  int get_num() const; // getter del numerador, de nombre: "get_num" 
+  int get_den() const; // getter del denominador, de nombre: "get_den"
   
-  // setters
-  void set_num(const int);
-  void set_den(const int);
+  // método: setters
+  void set_num(const int); // setter del numerador, de nombre: "set_num"
+  void set_den(const int); // setter del denominador, de nombre: "set_den"
 
   double value(void) const;
   rational_t opposite(void) const;
@@ -46,27 +46,27 @@ public:
   bool is_greater(const rational_t&, const double precision = EPSILON) const;
   bool is_less(const rational_t&, const double precision = EPSILON) const;
 
-  rational_t add(const rational_t&) const;
-  rational_t substract(const rational_t&) const;
-  rational_t multiply(const rational_t&) const;
-  rational_t divide(const rational_t&) const;
+  rational_t add(const rational_t&) const; // llamada a la función "add" o suma, para la clase "rational_t"
+  rational_t substract(const rational_t&) const; // llamada a la función "substract" o resta, para la clase "rational_t"
+  rational_t multiply(const rational_t&) const; // llamada a la función "multiply" o multiplicación, para la clase "rational_t"
+  rational_t divide(const rational_t&) const; // llamada a la función "divide" o división, para la clase "rational_t"
 
   void write(ostream& os = cout) const;
   void read(istream& is = cin);
   
-private:
+private: // De aquí en adelante los miembros son privados, a no ser que se exprese lo contrario
   // pauta de estilo [11]: nombre de los atributos seguido de "_"
-  int num_, den_;
+  int num_, den_; // declaración variables "num_" (numerador) y "den_" (denominador) como tipo int
 };
 
 
-// sobrecarga de los operadores de E/S
+// sobrecarga de los operadores de Entrada / Salida (E/S)
 ostream& operator<<(ostream& os, const rational_t&);
 istream& operator>>(istream& is, rational_t&);
 
 // FASE I: operadores
-rational_t operator+(const rational_t&, const rational_t&);
-rational_t operator-(const rational_t&, const rational_t&);
-rational_t operator*(const rational_t&, const rational_t&);
-rational_t operator/(const rational_t&, const rational_t&);
+rational_t operator+(const rational_t&, const rational_t&); // sobrecarga del operador (+)
+rational_t operator-(const rational_t&, const rational_t&); // sobrecarga del operador (-)
+rational_t operator*(const rational_t&, const rational_t&); // sobrecarga del operador (*)
+rational_t operator/(const rational_t&, const rational_t&); // sobrecarga del operador (/)
 
