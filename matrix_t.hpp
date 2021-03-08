@@ -39,7 +39,8 @@ class matrix_t      // clase de nombre: "matrix_t"
   const T& operator()(const int, const int) const;  // getter constante de "operator"
 
   // operaciones y operadores
-  void multiply(const matrix_t<T>&, const matrix_t<T>&);
+  matrix_t<T> multiply(const matrix_t<T>&, const matrix_t<T>&);
+//  void multiply(const matrix_t<T>&, const matrix_t<T>&);
 
   void write(ostream& = cout) const;
   void read(istream& = cin);
@@ -149,7 +150,7 @@ matrix_t<T>::pos(const int i, const int j) const  // llamada de la función "pos
 
 // FASE III: producto matricial
 template <class T>
-void matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)  // producto matricial
+matrix_t<T> matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)  // producto matricial
 {
   matrix_t<T> result(A.get_m(), B.get_n()); // A (filas), B (columnas)
   assert(A.get_n() == B.get_m());
