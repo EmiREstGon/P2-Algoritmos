@@ -27,6 +27,8 @@ class vector_t  // clase de nombre: "vector_t"
   // getters
   T get_val(const int) const;  // getter del valor, de nombre: "get_val"
   int get_size(void) const;    // getter del tamaño, de nombre: "get_size"
+  int get_par_v(void) const;
+  int get_par_w(void) const;
 
   // setters
   void set_val(const int, const T);  // setter del valor, de nombre: "set_val"
@@ -182,4 +184,26 @@ T scal_prod(const vector_t<T>& v, const vector_t<T>& w)  // producto escalar
 double scal_prod(const vector_t<rational_t>& v, const vector_t<rational_t>& w)  // producto escalar
 {
   return (v.scalar() * w.scalar()).value();
+}
+
+// Modificación
+template <class T>
+T vector_t<T>::get_par_v() const {
+  for (int i=0, i < sz_; i++) {
+    pares = v_[i]/2;
+  }
+  return pares_v;
+}
+
+template <class T>
+T vector_t<T>::get_par_w() const {
+  for (int i=0, i < sz_; i++) {
+    pares = w_[i]/2;
+  }
+  return pares_w;
+}
+
+T suma_vect_pares(const vector_t<T>& get_par_v, const vector_t<T>& get_par_w)
+{
+  return get_par_v + get_par_w;
 }

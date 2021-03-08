@@ -67,3 +67,8 @@ int main()
   
   return 0;
 }
+
+// Modificación
+  vector_t<double> get_par_v, get_par_w;
+  get_par_v.read(), get_par_v.write();
+  get_par_w.read(), get_par_w.write();
